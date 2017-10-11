@@ -9,4 +9,8 @@ class User < ApplicationRecord
 
   has_many :group_replationships
   has_many :participated_groups, :through => :group_replationships, :source => :group
+
+  def is_member_of?(group)
+    participated_groups.include?(group)
+  end
 end
